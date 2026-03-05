@@ -60,6 +60,7 @@ body {
   align-items: center;
   justify-content: center;
   padding: 40px 32px;
+  padding-top: calc(env(safe-area-inset-top) + 40px);
   gap: 0;
 }
 
@@ -136,6 +137,7 @@ body {
 .stats-content,
 .settings-content {
   padding: 32px 24px;
+  padding-top: calc(env(safe-area-inset-top) + 32px);
   padding-bottom: calc(var(--navbar-height) + 16px);
 }
 
