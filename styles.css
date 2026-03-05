@@ -309,7 +309,7 @@ input[type="number"]::placeholder {
 
 /* NAVBAR */
 .navbar {
-  height: var(--navbar-height);
+  height: calc(var(--navbar-height) + env(safe-area-inset-bottom));
   display: flex;
   background: var(--surface);
   border-top: 1px solid var(--border);
