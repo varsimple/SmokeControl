@@ -1,0 +1,343 @@
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+  --bg: #0f0f0f;
+  --surface: #1a1a1a;
+  --surface2: #242424;
+  --border: #2a2a2a;
+  --accent: #e8ff47;
+  --accent-dim: rgba(232, 255, 71, 0.12);
+  --text: #f0f0f0;
+  --text-muted: #666;
+  --text-dim: #999;
+  --danger: #ff4747;
+  --navbar-height: 72px;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Syne", sans-serif;
+}
+
+.app {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* SCREENS */
+.screen {
+  display: none;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.screen.active {
+  display: flex;
+  flex-direction: column;
+}
+
+/* HOME */
+.home-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 32px;
+  gap: 0;
+}
+
+.stat-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+  padding: 28px 0;
+}
+
+.stat-block p {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 56px;
+  font-weight: 300;
+  color: var(--accent);
+  letter-spacing: -2px;
+  line-height: 1;
+}
+
+.label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+}
+
+.sublabel {
+  font-size: 13px;
+  color: var(--text-dim);
+}
+
+.divider {
+  width: 1px;
+  height: 40px;
+  background: var(--border);
+  margin: 0 auto;
+}
+
+#addSmoke {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--accent);
+  color: #0f0f0f;
+  border: none;
+  border-radius: 100px;
+  padding: 16px 40px;
+  font-family: "Syne", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    opacity 0.15s ease;
+  letter-spacing: 0.5px;
+}
+
+#addSmoke:active {
+  transform: scale(0.95);
+  opacity: 0.85;
+}
+
+.btn-icon {
+  font-size: 22px;
+  line-height: 1;
+  margin-top: -2px;
+}
+
+/* STATS */
+.stats-content,
+.settings-content {
+  padding: 32px 24px;
+  padding-bottom: calc(var(--navbar-height) + 16px);
+}
+
+.screen-title {
+  font-size: 28px;
+  font-weight: 800;
+  text-transform: lowercase;
+  letter-spacing: -0.5px;
+  margin-bottom: 24px;
+  color: var(--text);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.stat-card-label {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+}
+
+.stat-card-value {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 32px;
+  font-weight: 400;
+  color: var(--accent);
+  line-height: 1.1;
+}
+
+.stat-card-unit {
+  font-size: 10px;
+  color: var(--text-dim);
+}
+
+.section-title {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.money-list {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.money-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  font-size: 15px;
+  border-bottom: 1px solid var(--border);
+}
+
+.money-row:last-child {
+  border-bottom: none;
+}
+
+.money-row span:last-child {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 15px;
+  color: var(--accent);
+  font-weight: 400;
+}
+
+/* SETTINGS */
+.setting-group {
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.setting-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+}
+
+.setting-hint {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+input[type="number"] {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  color: var(--text);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 18px;
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+
+input[type="number"]:focus {
+  border-color: var(--accent);
+}
+
+input[type="number"]::placeholder {
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.save-btn {
+  background: var(--accent);
+  color: #0f0f0f;
+  border: none;
+  border-radius: 12px;
+  padding: 15px;
+  font-family: "Syne", sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  width: 100%;
+  transition: opacity 0.15s;
+  text-transform: lowercase;
+  letter-spacing: 0.5px;
+}
+
+.save-btn:active {
+  opacity: 0.8;
+}
+
+.reset-btn {
+  background: transparent;
+  color: var(--danger);
+  border: 1px solid var(--danger);
+  border-radius: 12px;
+  padding: 15px;
+  font-family: "Syne", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.15s;
+  text-transform: lowercase;
+}
+
+.reset-btn:active {
+  background: rgba(255, 71, 71, 0.1);
+}
+
+/* NAVBAR */
+.navbar {
+  height: var(--navbar-height);
+  display: flex;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding-bottom: env(safe-area-inset-bottom);
+  flex-shrink: 0;
+}
+
+.nav-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-family: "Syne", sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: lowercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.nav-btn.active-nav {
+  color: var(--accent);
+}
+
+.nav-btn svg {
+  transition: stroke 0.2s;
+}

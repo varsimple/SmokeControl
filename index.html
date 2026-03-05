@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="theme-color" content="#0f0f0f" />
+    <title>Smoke Control</title>
+  </head>
+  <body>
+    <div class="app">
+      <!-- ГЛАВНАЯ -->
+      <div class="main screen active" id="home">
+        <div class="home-content">
+          <div class="stat-block">
+            <span class="label">последняя сигарета</span>
+            <p id="times">00:00:00</p>
+            <span class="sublabel" id="timer">назад</span>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="stat-block">
+            <span class="label">выкурено сегодня</span>
+            <p id="counter">0</p>
+            <span class="sublabel" id="сountSmoke">сигарет</span>
+          </div>
+
+          <button id="addSmoke">
+            <span class="btn-icon">+</span>
+            <span>закурил</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- СТАТИСТИКА -->
+      <div class="screen" id="stats">
+        <div class="stats-content">
+          <h2 class="screen-title">статистика</h2>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <span class="stat-card-label">сегодня</span>
+              <span class="stat-card-value" id="day">0</span>
+              <span class="stat-card-unit">сигарет</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-card-label">неделя</span>
+              <span class="stat-card-value" id="weekly">0</span>
+              <span class="stat-card-unit">сигарет</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-card-label">месяц</span>
+              <span class="stat-card-value" id="month">0</span>
+              <span class="stat-card-unit">сигарет</span>
+            </div>
+          </div>
+
+          <h3 class="section-title">потрачено денег</h3>
+
+          <div class="money-list">
+            <div class="money-row">
+              <span>Сегодня</span>
+              <span id="moneyDay">0 ₽</span>
+            </div>
+            <div class="money-row">
+              <span>За неделю</span>
+              <span id="moneyWeek">0 ₽</span>
+            </div>
+            <div class="money-row">
+              <span>За месяц</span>
+              <span id="moneyMonth">0 ₽</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- НАСТРОЙКИ -->
+      <div class="screen" id="settings">
+        <div class="settings-content">
+          <h2 class="screen-title">настройки</h2>
+
+          <div class="setting-group">
+            <label class="setting-label">цена пачки (₽)</label>
+            <input type="number" id="priceInput" placeholder="например, 200" />
+            <span class="setting-hint">в пачке 20 сигарет</span>
+          </div>
+
+          <button id="savePrice" class="save-btn">сохранить</button>
+
+          <div class="setting-group" style="margin-top: 32px">
+            <label class="setting-label">сбросить данные</label>
+            <button id="resetBtn" class="reset-btn">сбросить счётчик</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- НАВБАР -->
+      <div class="navbar">
+        <button id="navHome" class="nav-btn active-nav">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+            <polyline points="9 22 9 12 15 12 15 22" />
+          </svg>
+          <span>главная</span>
+        </button>
+        <button id="navStats" class="nav-btn">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <line x1="18" y1="20" x2="18" y2="10" />
+            <line x1="12" y1="20" x2="12" y2="4" />
+            <line x1="6" y1="20" x2="6" y2="14" />
+          </svg>
+          <span>статистика</span>
+        </button>
+        <button id="navSettings" class="nav-btn">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <circle cx="12" cy="12" r="3" />
+            <path
+              d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"
+            />
+          </svg>
+          <span>настройки</span>
+        </button>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
